@@ -1,10 +1,14 @@
+const fs = require("fs");
+const path = require("path");
+
+let fileName = path.join(__dirname, "../data", "tasks.json");
+let tasks = JSON.parse(fs.readFileSync(fileName, "utf-8"));
+
 const getAllTasks = (req, res, next) => {
-  console.log("from controller");
-  res.send("response to the user");
+  res.status(200).json({ status: "successful", data: tasks });
 };
 
 const createTask = (req, res, next) => {
-  console.log("from controller");
   res.send("task created");
 };
 
