@@ -9,7 +9,15 @@ const getAllTasks = (req, res, next) => {
 };
 
 const createTask = (req, res, next) => {
-  res.send("task created");
+  console.log(req.body);
+  tasks.push(req.body);
+  fs.writeFile(fileName, JSON.stringify(tasks, null, 2), (err) => {
+    if (err) {
+      res.status(500).json({ status: "Internal Error" });
+      return err;
+    }
+    res.status(201).json({ status: "successfull", data: [req.body] });
+  });
 };
 
 module.exports.getAllTasks = getAllTasks;

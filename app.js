@@ -8,7 +8,7 @@ const app = express();
 
 //root folder for the app is public
 app.use(express.static(path.join(__dirname, "public")));
-
+app.use(express.json());
 // MVC
 // Model : holds the structure of the model
 // View : page view (what users sees)
